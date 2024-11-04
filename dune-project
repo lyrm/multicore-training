@@ -20,12 +20,12 @@
   "Inspired by the Ray Tracing In One Weekend tutorial (https://raytracing.github.io/books/RayTracingInOneWeekend.html).")
  (depends
   (ocaml
-   (>= 4.14))
+   (>= 5.2))
   (graphics
    (>= 5.1.2))
   (ppx_deriving_yojson
    (>= 3.7.0))
-  (saturn_lockfree
+  (saturn
    (>= 0.5.0))))
 
 (package
@@ -66,18 +66,6 @@
     (and (>= 0.5.0) :with-test))
    (eio_main
     (and (>= 1.0.0) :with-test))))
-
-(package
- (name funocaml_actor_picos_io_cohttp)
- (synopsis
-  "FunOCaml Multicore Workshop: actor library for Picos through IO Cohttp")
- (depends
-  (funocaml_actor_shared
-   (= :version))
-  (picos_io_cohttp
-   (>= 0.5.0))
-   (picos_mux
-    (and (>= 0.5.0) :with-test))))
 
 (package
  (name funocaml_server)
