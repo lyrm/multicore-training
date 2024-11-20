@@ -8,7 +8,7 @@ let cell_width = width / 8
 let cell_height = height / 11
 let nsamples = 100
 let max_depth = 10
-let max_pending = cell_width * cell_height
+let max_pending = cell_width * cell_height * 3
 let () = Random.self_init ()
 let string_of_html html = Format.asprintf "%a" (H.pp ()) html
 
@@ -171,7 +171,8 @@ let () =
                          ])));
          Dream.get "/request" (fun query ->
              let username, user = get_user query in
-             if pending_count user >= max_pending then
+             if pending_count user + (cell_height * cell_width) > max_pending
+             then
                Lwt.return
                  (Dream.response ~headers:[ ("Content-Type", "text/json") ] "")
              else
