@@ -1,6 +1,6 @@
 # Fun OCaml workshop &mdash; Concurrency and Parallelism
 
-<img width="50%" src="doc/sphere.png">
+<img width="50%" src="sphere.png">
 
 We're going to build a distributed ray tracer!
 
