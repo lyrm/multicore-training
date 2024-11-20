@@ -17,21 +17,6 @@ let split_in i job =
   done;
   Queue.fold (fun acc x -> x :: acc) [] queue
 
-(* let with_domains () = *)
-(*   Eio_main.run @@ fun env -> *)
-(*   let client = Actor.client ?uri ~username env in *)
-(*   while true do *)
-(*     let sub = Actor.request client in *)
-(*     let jobs = *)
-(*       split_in 7 sub *)
-(*       |> List.map (fun sub () -> *)
-(*              let img = Actor.render sub in *)
-(*              Actor.respond client img) *)
-(*     in *)
-(*     let domains = List.map Domain.spawn jobs in *)
-(*     List.iter Domain.join domains *)
-(*   done *)
-
 let with_domain_manager () =
   Eio_main.run @@ fun env ->
   let dom_man = Eio.Stdenv.domain_mgr env in
@@ -46,6 +31,5 @@ let with_domain_manager () =
   done
 
 let () =
-  (* ignore with_domains; *)
   ignore with_domain_manager;
   with_domain_manager ()

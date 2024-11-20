@@ -14,18 +14,6 @@ let with_fibers () =
     Eio.Fiber.all [ do_; do_; do_ ]
   done
 
-(* let with_domains () = *)
-(*   Eio_main.run @@ fun env -> *)
-(*   let client = Actor.client ?uri ~username env in *)
-(*   while true do *)
-(*     let one = Domain.spawn (do_one client) in *)
-(*     let two = Domain.spawn (do_one client) in *)
-(*     (\* No need to create a third one, we can use the "master" domain *\) *)
-(*     do_one client (); *)
-(*     Domain.join one; *)
-(*     Domain.join two *)
-(*   done *)
-
 let with_domain_manager () =
   Eio_main.run @@ fun env ->
   let dom_man = Eio.Stdenv.domain_mgr env in
@@ -44,6 +32,5 @@ let with_domain_manager () =
 
 let () =
   ignore with_fibers;
-  (* ignore with_domains; *)
   ignore with_domain_manager;
   with_domain_manager ()
