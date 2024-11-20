@@ -29,52 +29,9 @@
    (>= 0.5.0))))
 
 (package
- (name funocaml_protocol)
- (synopsis "FunOCaml Multicore Workshop: actor/server protocol")
+ (name multicore_workshop)
+ (synopsis "Multicore Workshop")
  (depends
-  (yojson
-   (>= 2.0.0))
-  (ppx_deriving_yojson
-   (>= 3.7.0))
-  (ray_tracer
-   (= :version))))
-
-(package
- (name funocaml_actor_shared)
- (synopsis "FunOCaml Multicore Workshop: actor library (shared)")
- (depends
-  (funocaml_protocol
-   (= :version))
-  (cohttp
-   (>= 6.0.0~beta2))
-  (imagelib
-   (>= 20221222))
-  (base64
-   (>= 3.5.1))
-  (uri
-   (>= 4.4.0))))
-
-(package
- (name funocaml_actor_eio)
- (synopsis "FunOCaml Multicore Workshop: actor library for Eio")
- (depends
-  (funocaml_actor_shared
-   (= :version))
-  (cohttp-eio
-   (>= 6.0.0~beta2))
-  (saturn
-   (and
-    (>= 0.5.0)))
-  (eio_main
-   (and
-    (>= 1.0.0)))))
-
-(package
- (name funocaml_server)
- (synopsis "FunOCaml Multicore Workshop: server")
- (depends
-  (funocaml_protocol
-   (= :version))
   (dream
    (>= 1.0.0~alpha6))
   (js_of_ocaml
@@ -86,6 +43,26 @@
   (ppx_blob
    (>= 0.8.0))
   (tyxml
-   (>= 4.6.0))))
+   (>= 4.6.0))
+  (cohttp-eio
+   (>= 6.0.0~beta2))
+  (saturn
+   (and
+    (>= 0.5.0)))
+  (eio_main
+   (and
+    (>= 1.0.0)))
+  (cohttp
+   (>= 6.0.0~beta2))
+  (imagelib
+   (>= 20221222))
+  (base64
+   (>= 3.5.1))
+  (uri
+   (>= 4.4.0))
+  (yojson
+   (>= 2.0.0))
+  (ppx_deriving_yojson
+   (>= 3.7.0))))
 
 ; See the complete stanza docs at https://dune.readthedocs.io/en/stable/dune-files.html#dune-project

@@ -1,0 +1,29 @@
+(executable
+ (public_name naive)
+ (package multicore_workshop)
+ (modules naive)
+ (libraries eio_main actor))
+
+(executable
+ (public_name multi_requests)
+ (package multicore_workshop)
+ (modules multi_requests)
+ (libraries eio_main actor))
+
+(executable
+ (public_name splitting_with_domains)
+ (package multicore_workshop)
+ (modules splitting_with_domains)
+ (libraries eio_main actor))
+
+(executable
+ (public_name splitting_with_pool)
+ (package multicore_workshop)
+ (modules splitting_with_pool)
+ (libraries eio_main actor))
+
+(executable
+ (public_name load_balancing)
+ (package multicore_workshop)
+ (modules load_balancing)
+ (libraries eio_main actor saturn))

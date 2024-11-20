@@ -1,5 +1,5 @@
 (library
- (public_name funocaml_protocol)
+ (public_name multicore_workshop.protocol)
  (name protocol)
  (libraries yojson ray_tracer)
  (preprocess

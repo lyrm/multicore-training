@@ -159,14 +159,14 @@ let () =
                   H.(
                     html
                       (head
-                         (title (txt "Fun OCaml 2024 - Multicore workshop"))
+                         (title (txt "OCaml - Multicore workshop"))
                          [
                            script ~a:[ a_src "/front.js" ] (txt "");
                            link ~rel:[ `Stylesheet ] ~href:"/style.css" ();
                          ])
                       (body
                          [
-                           h1 [ txt "Fun OCaml 2024 - Multicore workshop" ];
+                           h1 [ txt "OCaml - Multicore workshop" ];
                            div ~a:[ a_id "image" ] [];
                          ])));
          Dream.get "/request" (fun query ->
