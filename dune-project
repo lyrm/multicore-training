@@ -63,9 +63,9 @@
   (cohttp-eio
    (>= 6.0.0~beta2))
    (saturn
-    (and (>= 0.5.0) :with-test))
+    (and (>= 0.5.0)))
    (eio_main
-    (and (>= 1.0.0) :with-test))))
+    (and (>= 1.0.0)))))
 
 (package
  (name funocaml_server)
