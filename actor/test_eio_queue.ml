@@ -17,13 +17,18 @@ let () =
   Eio_main.run @@ fun env ->
   let client = Actor.client ?uri ~username env in
   let queue = Queue.create () in
-  while true do
-    match Queue.pop_opt queue with
-    | Some job ->
-        let img = Actor.render job in
-        Actor.respond client img
-    | None ->
-        let job = Actor.request client in
-        let parts = split job 3 in
-        List.iter (Queue.push queue) parts
-  done
+  let mngr = Eio.Stdenv.domain_mgr env in
+  let do_ () =
+    while true do
+      match Queue.pop_opt queue with
+      | Some job ->
+          let img = Actor.render job in
+          Actor.respond client img
+      | None ->
+          let job = Actor.request client in
+          let parts = split job 3 in
+          List.iter (Queue.push queue) parts
+    done
+  in
+  let do_ _ = Eio.Domain_manager.run mngr do_ in
+  Eio.Fiber.all @@ List.init 7 do_
