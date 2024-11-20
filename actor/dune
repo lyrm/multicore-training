@@ -2,10 +2,10 @@
  (public_name test_eio)
  (package funocaml_actor_eio)
  (modules test_eio)
- (libraries eio_main actor_eio imagelib ray_tracer))
+ (libraries eio_main actor_eio))
 
 (executable
  (public_name test_eio_queue)
  (package funocaml_actor_eio)
  (modules test_eio_queue)
- (libraries eio_main actor_eio imagelib ray_tracer saturn))
+ (libraries eio_main actor_eio saturn))
