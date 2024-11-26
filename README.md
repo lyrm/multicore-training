@@ -1,6 +1,6 @@
 # Fun OCaml &mdash; Concurrency and Parallelism
 
-<img width="50%" src="sphere.png">
+<img width="50%" src="example.png">
 
 This workshop is about parallelizing ray tracing jobs!
 
