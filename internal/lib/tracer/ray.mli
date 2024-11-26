@@ -1,7 +1,6 @@
 (** This module contains most of the core functions of this ray tracer. It 
-defines rays, function to build them according to the camera configuration (
-see {!build_rays}), as well as the functions computing intersections with a 
-{!Scene.scene}.
+defines rays, function to build them according to the camera configuration,
+as well as the functions computing intersections with a scene.
 *)
 
 (** {1 Ray and rays} *)

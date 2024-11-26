@@ -14,8 +14,8 @@ The current repository contains:
 
 1. Requests rendering jobs from the server,
 2. Renders the job into an image,
-3. Respond to server with the rendered image, and
-4. Repeat.
+3. Responds to server with the rendered image, and
+4. Repeats,
 
 and does that as quickly as possible.
 
@@ -72,6 +72,7 @@ functions such as `request` and `render`.
 A convenient way to see the full documented API for `Actor` is to run:
 
 ```shell
+$ opam install odoc
 $ dune build @doc
 # Use open or firefox or ... if you don't have xdg-open
 $ xdg-open _build/default/_doc/_html/multicore_workshop/Actor/index.html
@@ -115,10 +116,10 @@ cores, we are going to split the jobs. The `Actor` library contains the right
 functions to do that.
 
 In a the `actors/splitting_with_domains.ml` file, split the jobs in as many
-parts as cores you have.
+parts as cores you have. 
 
 > [!NOTE]
-> Spawning more domains than you have cores will make the efficiency drop!
+> Spawning more domains than you have cores will make the efficiency drop! Use `Domain.recommended_domain_count` to know how many domains you can use. Don't forget to count your main domain (i.e. you can spawn as one domain less than the returned number)
 
 ## 4. Reusing the domains `actors/splitting_with_pool.ml`
 

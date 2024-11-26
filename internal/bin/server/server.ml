@@ -1,11 +1,11 @@
 open Lwt.Syntax
 module H = Tyxml_html
 
-let width = 1408
-let height = 1408
+let width = 1024
+let height = width
 let timeout = 1.0
 let cell_width = width / 8
-let cell_height = height / 11
+let cell_height = height / 8
 let nsamples = 100
 let max_depth = 10
 let max_pending = cell_width * cell_height * 3
