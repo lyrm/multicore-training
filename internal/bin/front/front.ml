@@ -1,6 +1,6 @@
 module Websocket = Brr_io.Websocket
 
-let size = 1408
+let size = 1024
 let s x = 100.0 *. float x /. float size
 
 let create ~ctx ~status ~color { Protocol.x; y; w; h } msg =
@@ -97,8 +97,8 @@ let fresh ctx canvas =
   Brr.El.append_children ctx [ canvas ];
   let canvas = Brr_canvas.Canvas.of_el canvas in
   let canvas_ctx = Brr_canvas.C2d.get_context canvas in
-  Brr_canvas.Canvas.set_w canvas 1408;
-  Brr_canvas.Canvas.set_h canvas 1408;
+  Brr_canvas.Canvas.set_w canvas size;
+  Brr_canvas.Canvas.set_h canvas size;
   Brr_canvas.C2d.reset_transform canvas_ctx
 
 let new_message ~ctx ~canvas ~canvas_ctx = function
@@ -137,8 +137,8 @@ let main () =
   Brr.El.append_children ctx [ canvas ];
   let canvas' = Brr_canvas.Canvas.of_el canvas in
   let canvas_ctx = Brr_canvas.C2d.get_context canvas' in
-  Brr_canvas.Canvas.set_w canvas' 1408;
-  Brr_canvas.Canvas.set_h canvas' 1408;
+  Brr_canvas.Canvas.set_w canvas' size;
+  Brr_canvas.Canvas.set_h canvas' size;
   Brr_canvas.C2d.reset_transform canvas_ctx;
 
   let ws = Websocket.create (Jstr.of_string "ws://localhost:8080/watch") in

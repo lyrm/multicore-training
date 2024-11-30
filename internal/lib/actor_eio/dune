@@ -1,4 +1,4 @@
 (library
- (public_name funocaml_actor_eio)
- (name actor_eio)
+ (public_name multicore_workshop.actor)
+ (name actor)
  (libraries eio eio.unix cohttp-eio actor_shared))

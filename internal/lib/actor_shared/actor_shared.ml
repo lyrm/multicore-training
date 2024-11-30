@@ -13,6 +13,9 @@ module type S = sig
   type job
   (** Type representing a job to raytrace part of an image. *)
 
+  val job_size : job -> int
+  (** [job_size job] is the number of pixels contained in [job]. *)
+
   type image
   (** Type representing a rendered image *)
 
@@ -94,6 +97,8 @@ module Make (Client : HTTP_CLIENT) = struct
       let top = { req with h = h2 } in
       let bottom = { req with y = req.y + h2; h = req.h - h2 } in
       Some ({ job with sub = top }, { job with sub = bottom })
+
+  let job_size { sub = req; _ } = req.w * req.h
 
   open Ray_tracer
 

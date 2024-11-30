@@ -1,14 +1,14 @@
 open Lwt.Syntax
 module H = Tyxml_html
 
+let width = 1024
+let height = width
 let timeout = 1.0
-let cell_width = 1408
-let cell_height = 16
+let cell_width = width / 8
+let cell_height = height / 8
 let nsamples = 100
 let max_depth = 10
-let max_pending = cell_width * cell_height
-let width = 1408
-let height = 1408
+let max_pending = cell_width * cell_height * 3
 let () = Random.self_init ()
 let string_of_html html = Format.asprintf "%a" (H.pp ()) html
 
@@ -159,19 +159,20 @@ let () =
                   H.(
                     html
                       (head
-                         (title (txt "Fun OCaml 2024 - Multicore workshop"))
+                         (title (txt "OCaml - Multicore workshop"))
                          [
                            script ~a:[ a_src "/front.js" ] (txt "");
                            link ~rel:[ `Stylesheet ] ~href:"/style.css" ();
                          ])
                       (body
                          [
-                           h1 [ txt "Fun OCaml 2024 - Multicore workshop" ];
+                           h1 [ txt "OCaml - Multicore workshop" ];
                            div ~a:[ a_id "image" ] [];
                          ])));
          Dream.get "/request" (fun query ->
              let username, user = get_user query in
-             if pending_count user >= max_pending then
+             if pending_count user + (cell_height * cell_width) > max_pending
+             then
                Lwt.return
                  (Dream.response ~headers:[ ("Content-Type", "text/json") ] "")
              else
@@ -252,12 +253,12 @@ let () =
              Lwt.return
              @@ Dream.response
                   ~headers:[ ("Content-Type", "text/css") ]
-                  [%blob "bin/server/style.css"]);
+                  [%blob "internal/bin/server/style.css"]);
          Dream.get "/front.js" (fun _ ->
              Lwt.return
              @@ Dream.response
                   ~headers:[ ("Content-Type", "text/javascript") ]
-                  [%blob "bin/front/front.bc.js"]);
+                  [%blob "internal/bin/front/front.bc.js"]);
          Dream.get "/watch" (fun _ ->
              Dream.websocket @@ fun ws ->
              clients := ws :: !clients;

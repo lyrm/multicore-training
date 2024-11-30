@@ -1,6 +1,6 @@
 (executable
- (public_name funocaml_server)
- (package funocaml_server)
+ (public_name multicore_workshop.server)
+ (package multicore_workshop)
  (name server)
  (libraries protocol dream tyxml color saturn)
  (preprocess
